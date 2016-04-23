@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFFFFF"
+    >
+
+    <LinearLayout
+        android:id="@+id/lndari"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:padding="15dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="TEMPAT PENJEMPUTAN"
+            />
+
+        <TextView
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:paddingTop="5dip"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            >
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/imageplace"
+            android:src="@drawable/places"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/TeLokasi"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:hint="Lokasi"
+            android:textColorHint="@android:color/darker_gray"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@id/imageplace"
+            />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:gravity="top"
+            >
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/imageaddres"
+                android:src="@drawable/address"
+                android:layout_alignParentLeft="true"
+                />
+
+            <FrameLayout
+                android:id="@+id/FrLokasiDetail"
+                android:layout_marginLeft="60dp"
+                android:layout_width="fill_parent"
+                android:layout_height="80dp">
+
+            <com.autofit.et.lib.AutoFitEditText
+                android:id="@+id/TeLokasiDetail"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:focusable="true"
+                android:gravity="top"
+                android:focusableInTouchMode="true"
+                android:hint="Alamat Lengkap *"
+                android:isScrollContainer="false"
+                android:inputType="textMultiLine|textNoSuggestions"
+                android:maxLength="240"
+                android:textColor="#000000"
+                android:textColorHint="@android:color/darker_gray"
+                android:textSize="14sp" />
+
+            </FrameLayout>
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="* Jalan/Gang/Ciri lainnya"
+            android:id="@+id/textView"
+            android:textStyle="italic"
+            android:textColor="@color/gray"
+            android:layout_gravity="right" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lntujuan"
+        android:layout_below="@+id/lndari"
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:padding="15dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="TUJUAN"
+            />
+
+        <TextView
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:paddingTop="5dip"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            >
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/imageplaceTuj"
+                android:src="@drawable/places"
+                android:layout_alignParentLeft="true"
+                />
+
+            <TextView
+                android:id="@+id/TeTujuan"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="19dp"
+                android:hint="Lokasi"
+                android:textColorHint="@android:color/darker_gray"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@id/imageplaceTuj"
+                />
+
+        </RelativeLayout>
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:padding="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Selanjutnya"
+            android:background="@drawable/buttonxml"
+            android:id="@+id/buttonNext"
+            android:drawableRight="@drawable/arrowright"
+            android:layout_gravity="right"
+            android:drawablePadding="10dip"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+</RelativeLayout>

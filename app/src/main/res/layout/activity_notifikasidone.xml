@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logogocak"
+        />
+
+    <LinearLayout
+        android:id="@+id/lnkonfirmasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:background="@drawable/linshadow"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Terima Kasih atas kepercayaannya menggunakan Go-Cak App"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textStyle="bold|italic"
+            android:text="Silahkan tunggu beberapa saat , untuk medapatkan notifikasi dari driver kami yang terdekat"
+            />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/mainmenu"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:text="Main Menu"
+            android:background="@drawable/ic_back"
+            android:drawableLeft="@drawable/address30"
+            />
+
+        <TextView
+            android:id="@+id/progress"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:text="Jejak Antar"
+            android:background="@drawable/ic_back"
+            android:drawableRight="@drawable/ic_dictionary30"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

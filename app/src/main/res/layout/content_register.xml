@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".view.register.RegisterActivity"
+    tools:showIn="@layout/activity_register"
+    android:background="@drawable/yellow"
+    >
+    <LinearLayout
+    android:id="@+id/LnLogon"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:padding="20dp"
+    >
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logogocak"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <EditText
+
+        android:id="@+id/namalengkap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_top_bg"
+        android:padding="20dp"
+        android:hint="Nama Lengkap"
+        android:textColorHint="#cccccc"
+        android:textColor="#000000"
+
+        />
+
+        <EditText
+
+            android:id="@+id/telp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_bottom_bg"
+            android:padding="20dp"
+            android:hint="No Telp"
+            android:inputType="number"
+            android:textColorHint="#cccccc"
+            android:textColor="#000000"
+
+            />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_bottom_bg"
+        android:layout_marginTop="-2dp"
+        android:padding="20dp"
+        android:hint="Password"
+        android:textColorHint="#cccccc"
+        android:textColor="#000000"
+        android:inputType="textPassword"
+        />
+
+    <Button
+        android:id="@+id/btdaftar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="4dp"
+        android:text="DAFTAR"
+        style="@style/DefaultButtonText"
+        android:background="@drawable/button_default_bg"
+        />
+
+
+    </LinearLayout>
+</RelativeLayout>
