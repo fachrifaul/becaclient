@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -27,7 +27,7 @@ import id.web.go_cak.sewa.UserSessionManager;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText txttelp,txtpassword,txtnamalengkap;
-    Button btdaftar;
+    TextView btdaftar;
     private static final String REGISTER_URL = "http://gocak.co.id/operator/index.php/Welcome/registerpelanggan";
     //{"users":{"ID":"5","nama":"Radi","email":"1Radi@radi.com","telp":"1081392380333"}}
     private static final String TAG_USERS = "users";
@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         txttelp = (EditText) findViewById(R.id.telp);
         txtnamalengkap = (EditText) findViewById(R.id.namalengkap);
         txtpassword = (EditText) findViewById(R.id.password);
-        btdaftar = (Button) findViewById(R.id.btdaftar);
+        btdaftar = (TextView) findViewById(R.id.btdaftar);
         btdaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
