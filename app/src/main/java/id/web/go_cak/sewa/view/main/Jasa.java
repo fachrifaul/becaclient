@@ -1,6 +1,6 @@
-package id.web.go_cak.sewa;
+package id.web.go_cak.sewa.view.main;
 
-public class EndangeredItem {
+public class Jasa {
     private String mName;
     private int mThumbnail;
 

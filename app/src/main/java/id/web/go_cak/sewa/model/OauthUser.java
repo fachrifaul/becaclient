@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by fachrifebrian on 4/24/16.
  */
-public class Login  {
+public class OauthUser {
     @SerializedName("users")
     public List<User> users = new ArrayList<User>();
     @SerializedName("success")

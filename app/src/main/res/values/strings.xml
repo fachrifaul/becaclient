@@ -27,5 +27,9 @@
     <string name="name_lengkap">Nama Lengkap</string>
     <string name="no_telp_masih_kosong">No telp masih kosong</string>
     <string name="password_masih_kosong">Password masih kosong</string>
+    <string name="password_minimal">Password minimal 4 karakter</string>
+    <string name="nama_lengkap_masih_kosong">Name lengkap masih kosong</string>
+    <string name="kesalahan_daftar">Terjadi kesalahan daftar, periksa Nama Lengkap, No Telp dan Password Anda.</string>
+    <string name="kesalahan_login">Terjadi Kesalahan Login, Periksa No Telp dan Password Anda.</string>
 
 </resources>

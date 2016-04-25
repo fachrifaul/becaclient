@@ -1,16 +1,15 @@
-package id.web.go_cak.sewa;
+package id.web.go_cak.sewa.session;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import id.web.go_cak.sewa.view.login.LoginActivity;
+import id.web.go_cak.sewa.util.Const;
 
 public class UserSessionManager {
 
     // Sharedpref file name
-    private static final String PREFER_NAME = "Grabspanet";
+    private static final String PREFER_NAME = "GocakClient";
     // All Shared Preferences Keys
     private static final String IS_USER_LOGIN = "isUserLoggedIn";
     // Shared Preferences reference
@@ -22,7 +21,7 @@ public class UserSessionManager {
     // Shared pref mode
     int PRIVATE_MODE = 0;
 
-    private String idUser, username,telp,email;
+    private String idUser, username, telp, email;
     private boolean status;
 
     // Constructor
@@ -34,7 +33,7 @@ public class UserSessionManager {
 
 
     //Create login session
-    public void createUserIdSession(boolean status, String idUser, String username,String telp,String email) {
+    public void createUserIdSession(boolean status, String idUser, String username, String telp, String email) {
 
         //public void createUserLoginSession(String StoreUserID, String email) {
         Log.v("kumaha ", idUser + "=" + username);
@@ -62,55 +61,19 @@ public class UserSessionManager {
      * Else do anything
      */
     public boolean checkLogin() {
-        // Check login status
         if (!this.isUserLoggedIn()) {
-
-            // user is not logged in redirect him to Login Activity
-            Intent i = new Intent(_context, LoginActivity.class);
-
-            // Closing all the Activities from stack
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            // Add new Flag to start new Activity
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            // Staring Login Activity
-            _context.startActivity(i);
-
             return true;
         } else {
             return false;
         }
     }
 
-
-    /**
-     * Get stored session data
-     */
-//    public HashMap<String, String> getUserDetails() {
-//
-//        //Use hashmap to store user credentials
-//        HashMap<String, String> user = new HashMap<String, String>();
-//
-//        // user name
-//        user.put(Constants.Extra.LOGIN_STATUS_KEY, pref.getString(Constants.STATUS_KEY, null));
-//
-//
-//        // return user
-//        return user;
-//    }
-
-    /**
-     * Clear session details
-     */
     public void userLogoutUser() {
         // Clearing all user data from Shared Preferences
         editor.clear();
         editor.commit();
     }
 
-
-    // Check for login
     public boolean isUserLoggedIn() {
         return pref.getBoolean(IS_USER_LOGIN, status);
     }

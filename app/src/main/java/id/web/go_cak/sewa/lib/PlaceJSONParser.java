@@ -1,4 +1,4 @@
-package id.web.go_cak.sewa;
+package id.web.go_cak.sewa.lib;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class GeocodeJSONParser {
+public class PlaceJSONParser {
 	
 	/** Receives a JSONObject and returns a list */
 	public List<HashMap<String,String>> parse(JSONObject jObject){		
@@ -51,24 +51,34 @@ public class GeocodeJSONParser {
 	private HashMap<String, String> getPlace(JSONObject jPlace){
 
 		HashMap<String, String> place = new HashMap<String, String>();
-		String formatted_address = "-NA-";		
-		String lat="";
-		String lng="";
+		String placeName = "-NA-";
+		String vicinity="-NA-";
+		String latitude="";
+		String longitude="";
+		String reference="";
 				
 		
 		try {
-			// Extracting formatted address, if available
-			if(!jPlace.isNull("formatted_address")){
-				formatted_address = jPlace.getString("formatted_address");
-			}			
+			// Extracting Place name, if available
+			if(!jPlace.isNull("name")){
+				placeName = jPlace.getString("name");
+			}
 			
-			lat = jPlace.getJSONObject("geometry").getJSONObject("location").getString("lat");
-			lng = jPlace.getJSONObject("geometry").getJSONObject("location").getString("lng");			
+			// Extracting Place Vicinity, if available
+			if(!jPlace.isNull("vicinity")){
+				vicinity = jPlace.getString("vicinity");
+			}	
+			
+			latitude = jPlace.getJSONObject("geometry").getJSONObject("location").getString("lat");
+			longitude = jPlace.getJSONObject("geometry").getJSONObject("location").getString("lng");
+			reference = jPlace.getString("reference");
 			
 			
-			place.put("formatted_address", formatted_address);			
-			place.put("lat", lat);
-			place.put("lng", lng);
+			place.put("place_name", placeName);
+			place.put("vicinity", vicinity);
+			place.put("lat", latitude);
+			place.put("lng", longitude);
+			place.put("reference", reference);
 			
 			
 		} catch (JSONException e) {			

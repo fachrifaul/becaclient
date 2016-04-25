@@ -1,4 +1,4 @@
-package id.web.go_cak.sewa;
+package id.web.go_cak.sewa.lib;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package id.web.go_cak.sewa;
+package id.web.go_cak.sewa.util;
 
 
 public class Const {

@@ -50,11 +50,12 @@
 
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/nama_lengkap_tel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/namalengkap"
+                    android:id="@+id/name_lengkap_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -66,11 +67,12 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/phone_tel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/telp"
+                    android:id="@+id/telp_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -78,15 +80,17 @@
                     android:drawablePadding="@dimen/activity_vertical_margin"
                     android:drawableStart="@drawable/ic_form_phone"
                     android:hint="@string/no_telp"
+                    android:inputType="number"
                     android:singleLine="true"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/password_tel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/passwordEdittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -112,7 +116,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/btdaftar"
+                        android:id="@+id/daftar_textview"
                         style="@style/Base.TextAppearance.AppCompat.Subhead"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

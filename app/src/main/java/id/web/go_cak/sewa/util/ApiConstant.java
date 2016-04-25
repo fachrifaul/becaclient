@@ -6,6 +6,6 @@ package id.web.go_cak.sewa.util;
 public class ApiConstant {
 
     public static final String SERVER_URL = "http://gocak.co.id/";
-    public static final String LOGIN_URL = SERVER_URL + "operator/index.php/Welcome/loginPelanggan";
+    public static final String AUTH_URL = SERVER_URL + "operator/index.php/Welcome/";
 
 }

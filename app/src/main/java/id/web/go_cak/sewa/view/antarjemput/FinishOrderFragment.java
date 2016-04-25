@@ -1,4 +1,4 @@
-package id.web.go_cak.sewa;
+package id.web.go_cak.sewa.view.antarjemput;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class NotifikasiDone extends Fragment {
+import id.web.go_cak.sewa.R;
+
+public class FinishOrderFragment extends Fragment {
 
     public static final String SHARED_PREFERENCES_NAME = "radi.latlong";
     public static final String FROMLATITUDE = "fromlatitude";
@@ -24,19 +26,10 @@ public class NotifikasiDone extends Fragment {
     private Toolbar toolbar;
     public View view;
 
-    /*public NotifikasiDone(TextView titleToolbar,Toolbar sendToolbar) {
-        this.titleToolbar = titleToolbar;
-        this.toolbar = sendToolbar;
-    }
-
-    public static Fragment newInstance(TextView titleToolbar,Toolbar sendToolbar) {
-        return new NotifikasiDone(titleToolbar,sendToolbar);
-    }*/
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.activity_notifikasidone, container, false);
+        view = inflater.inflate(R.layout.fragment_finish_order, container, false);
 
         //Menghapus Cache preferences
         SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFERENCES_NAME, getActivity().MODE_WORLD_READABLE);

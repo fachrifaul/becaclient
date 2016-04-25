@@ -13,12 +13,12 @@ import android.widget.EditText;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import id.web.go_cak.sewa.MainActivity;
 import id.web.go_cak.sewa.R;
-import id.web.go_cak.sewa.UserSessionManager;
-import id.web.go_cak.sewa.model.Login;
+import id.web.go_cak.sewa.model.OauthUser;
 import id.web.go_cak.sewa.model.User;
 import id.web.go_cak.sewa.service.ServiceLogin;
+import id.web.go_cak.sewa.session.UserSessionManager;
+import id.web.go_cak.sewa.view.main.MainActivity;
 import id.web.go_cak.sewa.view.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -52,25 +52,24 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        ServiceLogin serviceLogin = new ServiceLogin(LoginActivity.this);
-
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setCancelable(true);
         progressDialog.setMessage("Loading ....");
         progressDialog.show();
 
-        serviceLogin.fetchLogin(name, password,
+        new ServiceLogin(this).fetchLogin(name, password,
                 new ServiceLogin.LoginCallBack() {
                     @Override
-                    public void onSuccess(Login login) {
+                    public void onSuccess(OauthUser oauthUser) {
                         if (progressDialog.isShowing())
                             progressDialog.dismiss();
 
-                        User user = login.users.get(0);
+                        User user = oauthUser.users.get(0);
                         if (user != null) {
                             sessionManager.createUserIdSession(true, user.ID, user.nama, user.telp, user.email);
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
+                            finish();
                         }
                     }
 
@@ -88,53 +87,11 @@ public class LoginActivity extends AppCompatActivity {
     public void onClickDaftar() {
         Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(i);
-    }
-
-    public void loginProcess() {
-        String name = phoneEditText.getText().toString().trim().toLowerCase();
-        String password = passwordEditText.getText().toString().trim().toLowerCase();
-
-        if (!validatePhone()) {
-            return;
-        }
-
-        if (!validatePassword()) {
-            return;
-        }
-
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(true);
-        progressDialog.setMessage("Loading ....");
-        progressDialog.show();
-
-        new ServiceLogin(this).fetchLogin(name, password,
-                new ServiceLogin.LoginCallBack() {
-                    @Override
-                    public void onSuccess(Login login) {
-                        if (progressDialog.isShowing())
-                            progressDialog.dismiss();
-
-                        User user = login.users.get(0);
-                        if (user != null) {
-                            sessionManager.createUserIdSession(true, user.ID, user.nama, user.telp, user.email);
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(String message) {
-                        if (progressDialog.isShowing())
-                            progressDialog.dismiss();
-
-                        showSnackBar(message);
-                    }
-                });
+        finish();
     }
 
     @Override
     public void onBackPressed() {
-        System.exit(0);
         finish();
     }
 

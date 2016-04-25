@@ -1,133 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FAFAFA"
+                android:padding="7dp"
     >
 
     <LinearLayout
         android:id="@+id/lnkonfirmasi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:orientation="vertical"
         android:background="@drawable/linshadow"
+        android:orientation="vertical"
+        android:padding="15dp"
         >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="25dp"
+            android:text="KONFIRMASI ULANG"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:text="KONFIRMASI ULANG"
             />
 
         <TextView
             style="?android:attr/listSeparatorTextViewStyle"
-            android:paddingTop="5dip"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
+            android:background="@android:color/darker_gray"
+            android:gravity="center_horizontal"
+            android:paddingTop="5dip"/>
 
         <TextView
+            android:id="@+id/TeLokasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Jl. Harmonika Baru Jamin Ginting Medan"
+            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/akudisini30"
             android:drawablePadding="5dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/TeLokasi" />
+            android:gravity="center"
+            android:text="Jl. Harmonika Baru Jamin Ginting Medan"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Menuju"
             android:gravity="center"
+            android:text="Menuju"
             android:textStyle="bold"
             />
 
         <TextView
+            android:id="@+id/TeTujuan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Jl. Harmonika Baru Jamin Ginting Medan"
             android:drawableLeft="@drawable/places30"
             android:drawablePadding="0dp"
-            android:id="@+id/TeTujuan" />
+            android:gravity="center"
+            android:text="Jl. Harmonika Baru Jamin Ginting Medan"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/lnInfo"
-        android:layout_below="@id/lnkonfirmasi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:orientation="vertical"
+        android:layout_below="@id/lnkonfirmasi"
         android:background="@drawable/linshadow"
+        android:orientation="vertical"
+        android:padding="15dp"
         >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:text="Info Detail"
-        />
-
-    <TextView
-        style="?android:attr/listSeparatorTextViewStyle"
-        android:paddingTop="5dip"
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray" />
-
         <TextView
             android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="Info Detail"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:gravity="center_horizontal"
+            android:paddingTop="5dip"/>
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="left|center_vertical"
-            android:text="Jl. Harmonika Baru no 45 Jamin Ginting Medan dekat Rumah sakit Methodis"
+            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/address30"
             android:drawablePadding="15dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/address" />
+            android:gravity="left|center_vertical"
+            android:text="Jl. Harmonika Baru no 45 Jamin Ginting Medan dekat Rumah sakit Methodis"/>
 
         <TextView
+            android:id="@+id/distance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="left|center_vertical"
-            android:text="23.5 KM"
+            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/distance30"
             android:drawablePadding="15dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/distance" />
+            android:gravity="left|center_vertical"
+            android:text="23.5 KM"/>
 
         <TextView
+            android:id="@+id/payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="left|center_vertical"
-            android:text="Rp. 15.000"
+            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/payment30"
             android:drawablePadding="15dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/payment" />
+            android:gravity="left|center_vertical"
+            android:text="Rp. 15.000"/>
 
         <Button
-            android:layout_marginTop="20dp"
-            android:padding="10dp"
+            android:id="@+id/btnOrder"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="Order Sekarang"
-            android:background="@drawable/buttonxml"
-            android:id="@+id/btnOrder"
-            android:drawableRight="@drawable/order50"
             android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonxml"
             android:drawablePadding="10dip"
-            android:textStyle="bold"
-            android:textColor="#000000" />
+            android:drawableRight="@drawable/order50"
+            android:padding="10dp"
+            android:text="Order Sekarang"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 

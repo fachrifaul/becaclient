@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="id.web.go_cak.sewa.MainActivityFragment"
+    tools:context=".view.main.MainActivityFragment"
     android:background="#ffff"
     tools:showIn="@layout/activity_main">
 

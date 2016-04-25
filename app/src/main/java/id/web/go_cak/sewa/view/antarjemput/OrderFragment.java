@@ -1,7 +1,6 @@
-package id.web.go_cak.sewa;
+package id.web.go_cak.sewa.view.antarjemput;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,18 +19,18 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import id.web.go_cak.sewa.UserSessionManager;
+import id.web.go_cak.sewa.R;
+import id.web.go_cak.sewa.session.UserSessionManager;
 
-public class InfoActivity extends Fragment  {
+public class OrderFragment extends Fragment  {
 
-    public static final String LOG_TAG = InfoActivity.class.getName();
+    public static final String LOG_TAG = OrderFragment.class.getName();
 
     public static final String SHARED_PREFERENCES_NAME = "radi.latlong";
     public static final String FROMLATITUDE = "fromlatitude";
@@ -76,7 +75,7 @@ public class InfoActivity extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.activity_info, container, false);
+        view = inflater.inflate(R.layout.fragment_order, container, false);
 
         // Session class instance
         sessionManager = new UserSessionManager(getActivity());
@@ -149,7 +148,7 @@ public class InfoActivity extends Fragment  {
                                 FragmentManager fragmentManager3 = getFragmentManager();
                                 FragmentTransaction fragmentTransaction3 = fragmentManager3.beginTransaction();
                                 //Fragment fragment3 = NotifikasiDone.newInstance(titleToolbar, toolbar);
-                                Fragment fragment3 = new NotifikasiDone();
+                                Fragment fragment3 = new FinishOrderFragment();
                                 fragmentTransaction3.replace(R.id.fragment, fragment3, "Notifikasi next");
                                 fragmentTransaction3.addToBackStack(null);
                                 fragmentTransaction3.commit();

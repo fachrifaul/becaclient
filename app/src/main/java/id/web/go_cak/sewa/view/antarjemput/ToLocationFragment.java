@@ -1,31 +1,15 @@
-package id.web.go_cak.sewa;
+package id.web.go_cak.sewa.view.antarjemput;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -50,24 +34,33 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
-import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
 
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 
 import id.web.go_cak.sewa.R;
 
 
-public class GooglePlacesAutocompleteActivity extends Fragment implements OnItemClickListener, LocationListener, OnMarkerDragListener, OnMapLongClickListener {
+public class ToLocationFragment extends Fragment implements OnItemClickListener, LocationListener, OnMarkerDragListener, OnMapLongClickListener {
 
     //MapView mapView;
     GoogleMap mGoogleMap;
@@ -79,6 +72,7 @@ public class GooglePlacesAutocompleteActivity extends Fragment implements OnItem
     public static final String TOLATITUDE = "tolatitude";
     public static final String TOLONGITUDE = "tolongitude";
     public static final String TOFINAL = "tofinal";
+
     // Bikin variable Default untuk Posisiku bila GPS mati atau susah sinyal, Latlong Universitas siliwangi
     double mLatitude = 3.555109;
     double mLongitude = 98.642043;
@@ -91,6 +85,7 @@ public class GooglePlacesAutocompleteActivity extends Fragment implements OnItem
 
     //------------ make your specific key ------------
     //private static final String API_KEY = "AIzaSyBRuQwOy4jhyc3Xq8mrVEBZgK32bXdeIx8";
+
     private static final String API_KEY = "AIzaSyCptZZ0pbEkqNtBV4xURuaYNtji0oU9CO0";
     //private String API_KEY = getResources().getString(R.string.google_maps_api);
 
@@ -102,23 +97,23 @@ public class GooglePlacesAutocompleteActivity extends Fragment implements OnItem
 
     HashMap<String, String> mMarkerPlaceLink = new HashMap<String, String>();
 
-    /*public GooglePlacesAutocompleteActivity(TextView titleToolbar, Toolbar sendToolbar) {
+    /*public DeportiveActivity(TextView titleToolbar, Toolbar sendToolbar) {
         this.titleToolbar = titleToolbar;
         this.toolbar = sendToolbar;
     }
 
     public static Fragment newInstance(TextView titleToolbar, Toolbar sendToolbar) {
-        return new GooglePlacesAutocompleteActivity(titleToolbar, sendToolbar);
+        return new DeportiveActivity(titleToolbar, sendToolbar);
     }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.search_location, container, false);
+        view = inflater.inflate(R.layout.fragment_from_location, container, false);
 
         AutoCompleteTextView autoCompView = (AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
 
-        autoCompView.setAdapter(new GooglePlacesAutocompleteAdapter(getActivity(), R.layout.list_item));
+        autoCompView.setAdapter(new GooglePlacesAutocompleteAdapter(getActivity(), R.layout.item_location));
         autoCompView.setOnItemClickListener(this);
 
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity().getBaseContext());
@@ -160,17 +155,18 @@ public class GooglePlacesAutocompleteActivity extends Fragment implements OnItem
                     @Override
                     public void onInfoWindowClick(Marker arg0) {
                         //kirim lititude
+
                         SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFERENCES_NAME, getActivity().MODE_WORLD_READABLE);
-                        SharedPreferences.Editor editor = prefs.edit();
-                        editor.putFloat(FROMLATITUDE, (float) mLatitude);
-                        editor.putFloat(FROMLONGITUDE, (float) mLongitude);
-                        editor.putString(FROMFINAL, finalAddress);
+                        Editor editor = prefs.edit();
+                        editor.putFloat(TOLATITUDE, (float) mLatitude);
+                        editor.putFloat(TOLONGITUDE, (float) mLongitude);
+                        editor.putString(TOFINAL,finalAddress);
                         editor.commit();
 
                         FragmentManager fragmentManager = getFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        //Fragment fragment = Transport.newInstance(titleToolbar, toolbar);
-                        Fragment fragment = new Transport();
+                       // Fragment fragment = Transport.newInstance(titleToolbar, toolbar);
+                        Fragment fragment = new TransportFragment();
                         fragmentTransaction.replace(R.id.fragment, fragment, "Transport");
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
@@ -197,7 +193,7 @@ public class GooglePlacesAutocompleteActivity extends Fragment implements OnItem
 
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         String location = (String) adapterView.getItemAtPosition(position);
-        Toast.makeText(getActivity(), "Tempat terpilih "+location, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), location, Toast.LENGTH_SHORT).show();
 
         LatLng address = getLocationFromAddress(getActivity(), location);
         //mMap.addMarker(new MarkerOptions().position(address).title("Marker in Sydney"));
@@ -237,7 +233,6 @@ public class GooglePlacesAutocompleteActivity extends Fragment implements OnItem
         // end drag
 
     }
-
 
     public LatLng getLocationFromAddress(Context context, String strAddress)
     {
@@ -411,15 +406,15 @@ public class GooglePlacesAutocompleteActivity extends Fragment implements OnItem
 
         mGoogleMap.clear();
 
-       // mGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        //mGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         MarkerOptions mp = new MarkerOptions().draggable(true);
 
         mp.position(new LatLng(mLatitude, mLongitude));
 
-        mp.title("Klik Disini Jika Lokasi Benar");
-        mp.snippet("Geser Pin Bila Tidak Tepat\natau Input Pencarian diatas").icon(BitmapDescriptorFactory.fromResource(R.drawable.akudisini));
+        mp.title("Klik Disini Jika Tujuan Benar");
+        mp.snippet("Geser Pin Bila Tidak Tepat\natau Input Pencarian diatas");
 
         mGoogleMap.addMarker(mp).showInfoWindow();
 
@@ -441,11 +436,11 @@ public class GooglePlacesAutocompleteActivity extends Fragment implements OnItem
 
     @Override
     public void onMapLongClick(LatLng point) {
-        // Toast.makeText(getActivity(), "New marker added@" + point.toString(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getActivity(), "New marker added@" + point.toString(), Toast.LENGTH_LONG).show();
 
-       /* mGoogleMap.addMarker(new MarkerOptions()
+        /*mGoogleMap.addMarker(new MarkerOptions()
                 .position(point)
-                .draggable(true));*/
+                .draggable(true));/*/
 
         markerClicked = false;
     }
@@ -458,7 +453,7 @@ public class GooglePlacesAutocompleteActivity extends Fragment implements OnItem
 
     @Override
     public void onMarkerDragEnd(Marker marker) {
-        //Toast.makeText(getActivity(), "Finally coordinat Marker " + marker.getPosition() + " DragEnd", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Finally coordinat Marker " + marker.getPosition() + " DragEnd", Toast.LENGTH_LONG).show();
         mLatitude = marker.getPosition().latitude;
         mLongitude = marker.getPosition().longitude;
 

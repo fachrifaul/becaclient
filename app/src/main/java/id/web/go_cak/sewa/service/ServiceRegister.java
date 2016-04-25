@@ -16,29 +16,31 @@ import retrofit2.http.Query;
 /**
  * Created by fachrifebrian on 4/11/16.
  */
-public class ServiceLogin {
+public class ServiceRegister {
 
     public interface LoginUrl {
-        @GET("loginPelanggan")
+        @GET("registerpelanggan")
         Call<OauthUser> getLogin(
-                @Query("name") String name,
-                @Query("password") String password);
+                @Query("namalengkap") String namalengkap,
+                @Query("telp") String telp,
+                @Query("password") String password
+        );
     }
 
     private Context context;
 
-    public ServiceLogin(Context context) {
+    public ServiceRegister(Context context) {
         this.context = context;
     }
 
-    public void fetchLogin(String name, String password, final LoginCallBack callback) {
+    public void fetchLogin(String namalengkap, String telp, String password, final RegisterCallBack callback) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiConstant.AUTH_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         LoginUrl service = retrofit.create(LoginUrl.class);
-        Call<OauthUser> listCall = service.getLogin(name, password);
+        Call<OauthUser> listCall = service.getLogin(namalengkap, telp, password);
         listCall.enqueue(new Callback<OauthUser>() {
             @Override
             public void onResponse(Call<OauthUser> call,
@@ -50,7 +52,7 @@ public class ServiceLogin {
                     if (oauthUser.success == 1) {
                         callback.onSuccess(oauthUser);
                     } else {
-                        callback.onFailure(context.getString(R.string.kesalahan_login));
+                        callback.onFailure(context.getString(R.string.kesalahan_daftar));
                     }
                 } else {
                     callback.onFailure(response.message());
@@ -65,8 +67,8 @@ public class ServiceLogin {
         });
     }
 
-    public interface LoginCallBack {
-        void onSuccess(OauthUser oauthUser);
+    public interface RegisterCallBack {
+        void onSuccess(OauthUser login);
 
         void onFailure(String message);
     }
