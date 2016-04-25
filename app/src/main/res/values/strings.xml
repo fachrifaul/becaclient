@@ -1,29 +1,13 @@
 <resources>
     <string name="app_name">Go-cak App</string>
-    <string name="action_settings">Pengaturan</string>
 
     <string name="google_maps_key">AIzaSyDr8m7NB2XTj84kxOVgYYESWwvQFDGqTas</string>
-
-    <style name="DefaultButtonText">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#000000</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_margin">3dp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:shadowColor">#f9f9f9</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">1</item>
-    </style>
 
     <string name="title_activity_register">Register</string>
     <string name="no_telp">No Telp</string>
     <string name="masuk">Masuk</string>
     <string name="daftar">Daftar</string>
     <string name="password">Password</string>
-    <string name="title_activity_main2">Main2Activity</string>
     <string name="name_lengkap">Nama Lengkap</string>
     <string name="no_telp_masih_kosong">No telp masih kosong</string>
     <string name="password_masih_kosong">Password masih kosong</string>
@@ -31,5 +15,10 @@
     <string name="nama_lengkap_masih_kosong">Name lengkap masih kosong</string>
     <string name="kesalahan_daftar">Terjadi kesalahan daftar, periksa Nama Lengkap, No Telp dan Password Anda.</string>
     <string name="kesalahan_login">Terjadi Kesalahan Login, Periksa No Telp dan Password Anda.</string>
+    <string name="selanjutnya">Selanjutnya</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="detail_lokasi">Detail Lokasi</string>
+    <string name="please_try_again">Coba lagi</string>
+    <string name="order_sekarang">Order Sekarang</string>
 
 </resources>

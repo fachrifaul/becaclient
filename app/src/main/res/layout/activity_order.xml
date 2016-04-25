@@ -18,22 +18,14 @@
             app:title="Antar Jemput"/>
     </android.support.design.widget.AppBarLayout>
 
-    <!--<fragment-->
-    <!--android:id="@+id/fragment"-->
-    <!--android:name="id.web.go_cak.sewa.view.antarjemput.TransportFragment"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:background="#FAFAFA"-->
-    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-    <!--tools:layout="@layout/fragment_transport"/>-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FAFAFA"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:background="#FAFAFA"
+        android:padding="7dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -48,56 +40,48 @@
                 android:orientation="vertical"
                 android:padding="@dimen/activity_horizontal_margin">
 
-
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TEMPAT PENJEMPUTAN"
+                    android:layout_height="25dp"
+                    android:text="KONFIRMASI ULANG"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+
                     />
 
-                <View
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
                     android:background="@android:color/darker_gray"
-                    />
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/dari_lokasi_edittext"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/lokasi"
-                        android:textColor="@color/colorAccent"/>
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/detail_dari_lokasi_edittext"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/detail_lokasi"
-                        android:singleLine="true"
-                        android:textColor="@color/colorAccent"/>
-                </android.support.design.widget.TextInputLayout>
-
+                    android:gravity="center_horizontal"
+                    android:paddingTop="5dip"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/dari_lokasi_edittext"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:text="* Jalan/Gang/Ciri lainnya"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/gray"
-                    android:textStyle="italic"/>
+                    android:layout_marginTop="10dp"
+                    android:drawableLeft="@drawable/ic_form_location"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="Jl. Harmonika Baru Jamin Ginting Medan"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Menuju"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/tujuan_lokasi_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_form_destination"
+                    android:drawablePadding="0dp"
+                    android:gravity="center"
+                    android:text="Jl. Harmonika Baru Jamin Ginting Medan"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -118,31 +102,50 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TUJUAN"
+                    android:layout_height="25dp"
+                    android:text="Info Detail"
+                    android:textAllCaps="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     />
 
-                <View
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
                     android:background="@android:color/darker_gray"
-                    />
+                    android:gravity="center_horizontal"
+                    android:paddingTop="5dip"/>
 
-                <android.support.design.widget.TextInputLayout
+                <TextView
+                    android:id="@+id/address"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawableLeft="@drawable/ic_form_my_location"
+                    android:drawablePadding="15dp"
+                    android:gravity="left|center_vertical"
+                    android:text="Jl. Harmonika Baru no 45 Jamin Ginting Medan dekat Rumah sakit Methodis"/>
 
-                    <EditText
-                        android:id="@+id/tujuan_lokasi_edittext"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="false"
-                        android:hint="@string/lokasi"
-                        android:textColor="@color/colorAccent"/>
-                </android.support.design.widget.TextInputLayout>
+                <TextView
+                    android:id="@+id/distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawableLeft="@drawable/ic_form_distance"
+                    android:drawablePadding="15dp"
+                    android:gravity="left|center_vertical"
+                    android:text="23.5 KM"/>
+
+                <TextView
+                    android:id="@+id/payment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawableLeft="@drawable/ic_form_payment"
+                    android:drawablePadding="15dp"
+                    android:gravity="left|center_vertical"
+                    android:text="Rp. 15.000"/>
+
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -161,20 +164,23 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/selanjutnya_edittext"
+                    android:id="@+id/btnOrder"
                     style="@style/Base.TextAppearance.AppCompat.Subhead"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="@string/selanjutnya"
+                    android:text="@string/order_sekarang"
                     android:textAllCaps="true"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"/>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
+
+
     </LinearLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

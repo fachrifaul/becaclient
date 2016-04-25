@@ -36,10 +36,11 @@
 
         <activity
             android:name=".view.register.RegisterActivity"
-            android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme2.NoActionBar"/>
-        <activity android:name=".view.antarjemput.TransportActivity">
-        </activity>
+            android:label="@string/title_activity_register"/>
+        <activity android:name=".view.antarjemput.TransportActivity"/>
+        <activity android:name=".view.picklocation.PickLocationActivity"/>
+        <activity android:name=".view.order.OrderActivity"/>
+
     </application>
 
 </manifest>
