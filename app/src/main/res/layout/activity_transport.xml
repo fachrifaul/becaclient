@@ -15,7 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Antar Jemput"/>
+            app:title="@string/gocak_trans"/>
     </android.support.design.widget.AppBarLayout>
 
     <!--<fragment-->

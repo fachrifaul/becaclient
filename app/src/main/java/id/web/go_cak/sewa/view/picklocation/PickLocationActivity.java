@@ -189,7 +189,6 @@ public class PickLocationActivity extends AppCompatActivity implements EasyPermi
         ButterKnife.bind(this);
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         btnLocation.setOnClickListener(btnLocationClick);

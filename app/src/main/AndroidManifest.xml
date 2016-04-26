@@ -28,6 +28,7 @@
         </activity>
         <activity
             android:name=".view.login.LoginActivity"
+            android:theme="@style/AppThemeTransparent"
             android:screenOrientation="portrait"/>
 
         <meta-data

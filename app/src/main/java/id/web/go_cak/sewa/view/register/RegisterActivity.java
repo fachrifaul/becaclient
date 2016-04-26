@@ -38,6 +38,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        overridePendingTransition(R.anim.do_nothing, R.anim.do_nothing);
+    }
+
     @OnClick(R.id.daftar_textview)
     public void onClickDaftar() {
         String namalengkap = namLengkapEditText.getText().toString().trim();

@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                             sessionManager.createUserIdSession(true, user.ID, user.nama, user.telp, user.email);
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.do_nothing, R.anim.do_nothing);
                             finish();
                         }
                     }
@@ -87,7 +88,8 @@ public class LoginActivity extends AppCompatActivity {
     public void onClickDaftar() {
         Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(i);
-        finish();
+        overridePendingTransition(R.anim.do_nothing, R.anim.do_nothing);
+
     }
 
     @Override

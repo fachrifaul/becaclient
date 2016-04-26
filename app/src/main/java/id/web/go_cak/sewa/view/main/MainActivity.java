@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     if (position != 1) {
                         Intent intent = new Intent(MainActivity.this, TransportActivity.class);
                         startActivity(intent);
+                        overridePendingTransition(R.anim.do_nothing, R.anim.do_nothing);
                     } else {
                         showSnackBar("Fitur ini akan segera launching");
                     }

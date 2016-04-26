@@ -35,7 +35,7 @@
             android:background="@color/colorYellow"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Antar Jemput"
+            android:text="@string/gocak_trans"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             />
 

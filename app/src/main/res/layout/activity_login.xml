@@ -2,41 +2,102 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/coordinatorLayout"
     android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="265dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_gocak"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimaryTransparent"/>
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/logogocak"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:gravity="center"
+                    android:text="Login"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                    android:textColor="@android:color/white"/>
+
+            </RelativeLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="55"
-            android:background="@color/colorPrimary">
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--android:layout_weight="55"-->
+        <!--android:background="@drawable/bg_gocak">-->
+
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/colorPrimaryTransparent"/>-->
 
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/logogocak"
-                />
+        <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="72dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:src="@drawable/logogocak"-->
+        <!--/>-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="@dimen/activity_vertical_margin"
-                android:gravity="center"
-                android:text="Login"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-                android:textColor="@android:color/white"/>
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_margin="@dimen/activity_vertical_margin"-->
+        <!--android:gravity="center"-->
+        <!--android:text="Login"-->
+        <!--android:textAppearance="@style/TextAppearance.AppCompat.Display2"-->
+        <!--android:textColor="@android:color/white"/>-->
 
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
 
         <LinearLayout
@@ -49,8 +110,8 @@
 
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
                 android:id="@+id/phone_tel"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
@@ -60,15 +121,15 @@
                     android:layout_marginBottom="10dp"
                     android:drawableLeft="@drawable/ic_form_phone"
                     android:drawablePadding="@dimen/activity_vertical_margin"
-                    android:inputType="number"
                     android:drawableStart="@drawable/ic_form_phone"
                     android:hint="@string/no_telp"
+                    android:inputType="number"
                     android:singleLine="true"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
                 android:id="@+id/password_tel"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
@@ -115,9 +176,9 @@
             <TextView
                 android:id="@+id/daftar_textview"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:gravity="center"
                 android:text="@string/daftar"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"

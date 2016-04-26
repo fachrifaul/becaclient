@@ -20,5 +20,7 @@
     <string name="detail_lokasi">Detail Lokasi</string>
     <string name="please_try_again">Coba lagi</string>
     <string name="order_sekarang">Order Sekarang</string>
+    <string name="gocak_trans">Go-Cak Trans</string>
+    <string name="gocak_services">Go-Cak Services</string>
 
 </resources>
