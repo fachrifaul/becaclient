@@ -96,7 +96,7 @@ public class TransportActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    @OnClick(R.id.selanjutnya_edittext)
+    @OnClick(R.id.selanjutnya_textview)
     public void selanjutnya() {
         if (dariLokasiEditText.getText().toString().equals("")
                 && detailDariLokasiEditText.getText().toString().equals("")

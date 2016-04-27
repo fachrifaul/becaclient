@@ -18,21 +18,11 @@
             app:title="@string/gocak_trans"/>
     </android.support.design.widget.AppBarLayout>
 
-    <!--<fragment-->
-    <!--android:id="@+id/fragment"-->
-    <!--android:name="id.web.go_cak.sewa.view.antarjemput.TransportFragment"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:background="#FAFAFA"-->
-    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-    <!--tools:layout="@layout/fragment_transport"/>-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FAFAFA"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="7dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.CardView
@@ -161,7 +151,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/selanjutnya_edittext"
+                    android:id="@+id/selanjutnya_textview"
                     style="@style/Base.TextAppearance.AppCompat.Subhead"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

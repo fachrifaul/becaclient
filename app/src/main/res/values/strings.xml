@@ -22,5 +22,9 @@
     <string name="order_sekarang">Order Sekarang</string>
     <string name="gocak_trans">Go-Cak Trans</string>
     <string name="gocak_services">Go-Cak Services</string>
+    <string name="cek_kembali_tujuan">Cek kembali lokasi tujuan Anda</string>
+    <string name="order_gagal">Order gagal. Coba lagi.</string>
+    <string name="koneksi_bermasalah">Koneksi bermasalah. Coba lagi.</string>
+    <string name="biaya_tambah">Maksimal 2 orang penumpang, lebih dari 2 penumpang dikenakan tarip 30% per orang dari tarip normal</string>
 
 </resources>

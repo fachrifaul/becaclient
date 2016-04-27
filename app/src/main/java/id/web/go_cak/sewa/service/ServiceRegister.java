@@ -35,7 +35,7 @@ public class ServiceRegister {
 
     public void fetchLogin(String namalengkap, String telp, String password, final RegisterCallBack callback) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ApiConstant.AUTH_URL)
+                .baseUrl(ApiConstant.API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -55,14 +55,14 @@ public class ServiceRegister {
                         callback.onFailure(context.getString(R.string.kesalahan_daftar));
                     }
                 } else {
-                    callback.onFailure(response.message());
+                    callback.onFailure(context.getString(R.string.koneksi_bermasalah));
                 }
             }
 
             @Override
             public void onFailure(Call<OauthUser> call,
                                   Throwable t) {
-                callback.onFailure(t.getMessage());
+                callback.onFailure(context.getString(R.string.koneksi_bermasalah));
             }
         });
     }
