@@ -15,6 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Silahkan tunggu beberapa saat , untuk medapatkan notifikasi dari driver kami yang terdekat"
+        android:text="Silahkan tunggu beberapa saat , untuk medapatkan sms notifikasi dari Operator Go-Cak Medan"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 </LinearLayout>

@@ -24,12 +24,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         mItems = new ArrayList<>();
         Jasa species = new Jasa();
         species.setName(context.getString(R.string.gocak_trans));
-        species.setThumbnail(R.drawable.bentor);
+        species.setThumbnail(R.drawable.gocaktransport);
         mItems.add(species);
 
         species = new Jasa();
         species.setName(context.getString(R.string.gocak_services));
-        species.setThumbnail(R.drawable.paket);
+        species.setThumbnail(R.drawable.gocakservice);
         mItems.add(species);
         this.context = context;
 
