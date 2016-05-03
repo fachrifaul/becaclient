@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Go-cak App</string>
 
-    <string name="google_maps_key">AIzaSyDr8m7NB2XTj84kxOVgYYESWwvQFDGqTas</string>
+    <!--<string name="google_maps_key">AIzaSyDr8m7NB2XTj84kxOVgYYESWwvQFDGqTas</string>-->
 
     <string name="title_activity_register">Register</string>
     <string name="no_telp">No Telp</string>
@@ -26,5 +26,6 @@
     <string name="order_gagal">Order gagal. Coba lagi.</string>
     <string name="koneksi_bermasalah">Koneksi bermasalah. Coba lagi.</string>
     <string name="biaya_tambah">Maksimal 2 orang penumpang, lebih dari 2 penumpang dikenakan tarip 30% per orang dari tarip normal</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
