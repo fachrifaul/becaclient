@@ -1,4 +1,4 @@
-package id.web.go_cak.sewa;
+package id.web.gocak;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

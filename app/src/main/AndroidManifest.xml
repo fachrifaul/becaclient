@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="id.web.go_cak.sewa">
+          package="id.web.gocak">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.main.MainActivity"
+            android:name="id.web.gocak.view.main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.login.LoginActivity"
+            android:name="id.web.gocak.view.login.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeTransparent"/>
 
@@ -36,11 +36,11 @@
             android:value="@string/google_maps_key"/>
 
         <activity
-            android:name=".view.register.RegisterActivity"
+            android:name="id.web.gocak.view.register.RegisterActivity"
             android:label="@string/title_activity_register"/>
-        <activity android:name=".view.antarjemput.TransportActivity"/>
-        <activity android:name=".view.picklocation.PickLocationActivity"/>
-        <activity android:name=".view.order.OrderActivity"/>
+        <activity android:name="id.web.gocak.view.antarjemput.TransportActivity"/>
+        <activity android:name="id.web.gocak.view.picklocation.PickLocationActivity"/>
+        <activity android:name="id.web.gocak.view.order.OrderActivity"/>
     </application>
 
 </manifest>

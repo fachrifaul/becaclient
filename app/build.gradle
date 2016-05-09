@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "id.web.go_cak.sewa"
+        applicationId "id.web.gocak"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 2
