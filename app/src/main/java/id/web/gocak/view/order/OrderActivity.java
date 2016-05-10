@@ -11,8 +11,6 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
-import org.json.JSONArray;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -27,20 +25,6 @@ import id.web.gocak.view.main.MainActivity;
 
 public class OrderActivity extends AppCompatActivity {
 
-    private static final String REGISTER_URL = "http://gocak.co.id/operator/index.php/Welcome/jarak";
-    private static final String TAG_USERS = "lokasi";
-    private static final String SAVE_URL = "http://gocak.co.id/operator/index.php/Welcome/jemput";
-    private static final String TAG_SAVE = "jemput";
-
-    // contacts JSONArray
-    JSONArray LOKASI = null;
-    JSONArray SAVE = null;
-
-    private String FROMLATITUDE, FROMLONGITUDE, TOLATITUDE, TOLONGITUDE;
-    private String FROMADDRESS, TOADDRESS, DETAILADDRESS;
-
-    private UserSessionManager sessionManager;
-
     @Bind(R.id.dari_lokasi_textview) TextView dariLokasiTextView;
     @Bind(R.id.tujuan_lokasi_textview) TextView tujuanLokasiTextView;
 
@@ -48,7 +32,11 @@ public class OrderActivity extends AppCompatActivity {
     @Bind(R.id.distance_textview) TextView distanceTextView;
     @Bind(R.id.payment_textview) TextView paymentTextView;
 
-    String paymentOrder, distanceOrder;
+    private String FROMLATITUDE, FROMLONGITUDE, TOLATITUDE, TOLONGITUDE;
+    private String FROMADDRESS, TOADDRESS, DETAILADDRESS;
+    private String paymentOrder, distanceOrder;
+
+    private UserSessionManager sessionManager;
 
 
     @Override

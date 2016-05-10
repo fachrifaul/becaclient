@@ -30,17 +30,17 @@
             android:name="id.web.gocak.view.login.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeTransparent"/>
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
-
         <activity
             android:name="id.web.gocak.view.register.RegisterActivity"
             android:label="@string/title_activity_register"/>
         <activity android:name="id.web.gocak.view.antarjemput.TransportActivity"/>
         <activity android:name="id.web.gocak.view.picklocation.PickLocationActivity"/>
         <activity android:name="id.web.gocak.view.order.OrderActivity"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
+
     </application>
 
 </manifest>
