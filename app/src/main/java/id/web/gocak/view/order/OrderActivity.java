@@ -37,7 +37,7 @@ public class OrderActivity extends AppCompatActivity {
     private String paymentOrder, distanceOrder;
 
     private UserSessionManager sessionManager;
-
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,11 @@ public class OrderActivity extends AppCompatActivity {
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        progressDialog = new ProgressDialog(OrderActivity.this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading ....");
+        progressDialog.show();
 
         sessionManager = new UserSessionManager(this);
 
@@ -82,29 +87,17 @@ public class OrderActivity extends AppCompatActivity {
 
     @OnClick(R.id.order_textview)
     public void onClickOrder() {
-
-        final ProgressDialog progressDialog = new ProgressDialog(OrderActivity.this);
-        progressDialog.setCancelable(true);
-        progressDialog.setMessage("Loading ....");
-        progressDialog.show();
-
         new ServiceOrder(this).fetchOrder(sessionManager.getIdUser(), sessionManager.getTelp(), DETAILADDRESS,
                 FROMLATITUDE, FROMLONGITUDE, TOLATITUDE, TOLONGITUDE,
                 distanceOrder, paymentOrder,
                 new ServiceOrder.OrderCallBack() {
                     @Override
                     public void onSuccess(Order.Jemput jemput) {
-                        if (progressDialog.isShowing())
-                            progressDialog.dismiss();
-
                         showDialog();
                     }
 
                     @Override
                     public void onFailure(String message) {
-                        if (progressDialog.isShowing())
-                            progressDialog.dismiss();
-
                         showDialogFailed(message);
                     }
                 });
@@ -116,6 +109,10 @@ public class OrderActivity extends AppCompatActivity {
                 new ServiceDistance.DistanceCallBack() {
                     @Override
                     public void onSuccess(Distance.Lokasi lokasi) {
+                        if (progressDialog.isShowing())
+                            progressDialog.dismiss();
+
+                        progressDialog.dismiss();
                         paymentOrder = String.valueOf(lokasi.payment);
                         distanceOrder = String.valueOf(lokasi.distanceValue);
                         distanceTextView.setText(lokasi.distance);
@@ -124,15 +121,37 @@ public class OrderActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(String message) {
-                        showDialogFailed(message);
+                        if (progressDialog.isShowing())
+                            progressDialog.dismiss();
+
+                        showDialogDistanceFailed(message);
                     }
                 });
     }
+
+    private void showDialogDistanceFailed(String message) {
+        MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title("Order")
+                .content(message)
+                .positiveText(android.R.string.ok)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                        finish();
+                    }
+                })
+                .autoDismiss(false)
+                .build();
+        dialog.show();
+    }
+
 
     private void showDialogFailed(String message) {
         MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title("Order")
                 .content(message)
+                .cancelable(false)
                 .positiveText(android.R.string.ok)
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
@@ -148,6 +167,7 @@ public class OrderActivity extends AppCompatActivity {
     private void showDialog() {
         MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title("Order Selesai")
+                .cancelable(false)
                 .customView(R.layout.dialog_done, true)
                 .positiveText(android.R.string.ok)
                 .onPositive(new MaterialDialog.SingleButtonCallback() {

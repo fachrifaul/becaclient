@@ -67,39 +67,6 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:fitsSystemWindows="true"-->
-        <!--android:layout_weight="55"-->
-        <!--android:background="@drawable/bg_gocak">-->
-
-        <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:background="@color/colorPrimaryTransparent"/>-->
-
-
-        <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="72dp"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:src="@drawable/logogocak"-->
-        <!--/>-->
-
-        <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_margin="@dimen/activity_vertical_margin"-->
-        <!--android:gravity="center"-->
-        <!--android:text="Login"-->
-        <!--android:textAppearance="@style/TextAppearance.AppCompat.Display2"-->
-        <!--android:textColor="@android:color/white"/>-->
-
-        <!--</RelativeLayout>-->
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

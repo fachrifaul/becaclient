@@ -56,6 +56,7 @@ public class ServiceDistance {
                     Distance.Lokasi lokasi = distance.lokasi.get(0);
 
                     Log.wtf("TAG", "onResponse: "+lokasi.distance );
+                    Log.wtf("TAG", "onResponse: "+lokasi.distanceValue );
 
                     if (!lokasi.distance.equals("0")) {
                         callback.onSuccess(lokasi);
