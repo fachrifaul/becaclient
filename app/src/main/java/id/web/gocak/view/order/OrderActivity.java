@@ -88,7 +88,7 @@ public class OrderActivity extends AppCompatActivity {
     @OnClick(R.id.order_textview)
     public void onClickOrder() {
         new ServiceOrder(this).fetchOrder(sessionManager.getIdUser(), sessionManager.getTelp(), DETAILADDRESS,
-                FROMLATITUDE, FROMLONGITUDE, TOLATITUDE, TOLONGITUDE,
+               FROMADDRESS, FROMLATITUDE, FROMLONGITUDE,TOADDRESS, TOLATITUDE, TOLONGITUDE,
                 distanceOrder, paymentOrder,
                 new ServiceOrder.OrderCallBack() {
                     @Override

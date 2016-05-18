@@ -25,14 +25,15 @@ public class ServiceOrder {
                 @Query("ID") String ID,
                 @Query("userName") String userName,
                 @Query("addressdetail") String addressdetail,
+                @Query("alamatfrom") String alamatfrom,
                 @Query("latfrom") String latfrom,
-                @Query("latto") String latto,
                 @Query("longfrom") String longfrom,
+                @Query("alamatto") String alamatto,
+                @Query("latto") String latto,
                 @Query("longto") String longto,
                 @Query("distance") String distance,
                 @Query("payment") String payment
         );
-
     }
 
     private Context context;
@@ -43,8 +44,8 @@ public class ServiceOrder {
 
     public void fetchOrder(
             String ID, String userName, String addressdetail,
-            String fromLatitude, String fromLongitude,
-            String toLatitude, String toLongitude,
+            String fromAddress, String fromLatitude, String fromLongitude,
+            String toAddress, String toLatitude, String toLongitude,
             String distance,
             String payment, final OrderCallBack callback) {
 
@@ -55,7 +56,10 @@ public class ServiceOrder {
 
         OrderUrl service = retrofit.create(OrderUrl.class);
         Call<Order> listCall = service.getOrder(ID, userName, addressdetail,
-                fromLatitude, toLatitude, fromLongitude, toLongitude, distance, payment);
+                fromAddress, fromLatitude, fromLongitude,
+                toAddress, toLatitude, toLongitude,
+                distance, payment);
+
         listCall.enqueue(new Callback<Order>() {
             @Override
             public void onResponse(Call<Order> call,
