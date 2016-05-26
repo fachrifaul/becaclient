@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1024088218970",
+    "firebase_url": "https://gocak-user.firebaseio.com",
+    "project_id": "gocak-user",
+    "storage_bucket": "gocak-user.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024088218970:android:095638cf387b678e",
+        "android_client_info": {
+          "package_name": "id.web.gocak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024088218970-032de07rf8a1vknbvvg49a2dguhnd0sj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkL1CiKaIw2GDEMl33fe9dA51u_gXET_s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
