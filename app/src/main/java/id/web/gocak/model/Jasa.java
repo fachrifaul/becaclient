@@ -1,4 +1,4 @@
-package id.web.gocak.view.main;
+package id.web.gocak.model;
 
 public class Jasa {
     private String mName;

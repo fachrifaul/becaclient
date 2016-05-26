@@ -1,4 +1,4 @@
-package id.web.gocak.view.order;
+package id.web.gocak.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -21,7 +21,6 @@ import id.web.gocak.service.ServiceDistance;
 import id.web.gocak.service.ServiceOrder;
 import id.web.gocak.session.UserSessionManager;
 import id.web.gocak.util.ApiConstant;
-import id.web.gocak.view.main.MainActivity;
 
 public class OrderActivity extends AppCompatActivity {
 

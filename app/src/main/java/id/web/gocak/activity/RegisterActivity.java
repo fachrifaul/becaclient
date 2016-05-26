@@ -1,4 +1,4 @@
-package id.web.gocak.view.register;
+package id.web.gocak.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,7 +18,6 @@ import id.web.gocak.R;
 import id.web.gocak.model.OauthUser;
 import id.web.gocak.model.User;
 import id.web.gocak.service.ServiceRegister;
-import id.web.gocak.view.main.MainActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 

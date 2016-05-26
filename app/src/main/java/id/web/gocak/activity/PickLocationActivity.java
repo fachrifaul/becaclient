@@ -1,4 +1,4 @@
-package id.web.gocak.view.picklocation;
+package id.web.gocak.activity;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
@@ -38,13 +40,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import id.web.gocak.R;
+import id.web.gocak.adapter.PlaceArrayAdapter;
 import id.web.gocak.service.GPSTracker;
 import id.web.gocak.util.ApiConstant;
 import id.web.gocak.util.AppUtil;
 
 public class PickLocationActivity extends AppCompatActivity implements
-        GoogleApiClient.OnConnectionFailedListener,
-        GoogleApiClient.ConnectionCallbacks {
+        OnMapReadyCallback {
 
     @Bind(R.id.tv_location) TextView tvLocation;
     @Bind(R.id.progress) ProgressBar progress;
@@ -53,7 +55,7 @@ public class PickLocationActivity extends AppCompatActivity implements
     private static final String LOG_TAG = "PickLocationActivity";
     private static final int GOOGLE_API_CLIENT_ID = 0;
     private static final LatLngBounds BOUNDS_MOUNTAIN_VIEW = new LatLngBounds(
-            new LatLng(3.5945957,98.6705942), new LatLng(3.5945957,98.6705942));
+            new LatLng(3.5945957, 98.6705942), new LatLng(3.5945957, 98.6705942));
 
     private String address, latitude, longitude;
     private LatLng currentLocation;
@@ -87,60 +89,52 @@ public class PickLocationActivity extends AppCompatActivity implements
             dialog.show();
 
         } else {
-            SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.map);
+            SupportMapFragment mapFragment =
+                    (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+            mapFragment.getMapAsync(this);
 
-            googleMap = supportMapFragment.getMap();
-            googleMap.getUiSettings().setZoomControlsEnabled(true);
-            googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
-                @Override
-                public void onCameraChange(CameraPosition cameraPosition) {
-                    LatLng centerLatLng = cameraPosition.target;
-                    Log.d("Center Latitude", String.valueOf(centerLatLng.latitude));
-                    Log.d("Center Longitude", String.valueOf(centerLatLng.longitude));
 
-                    currentLocation = centerLatLng;
-
-                    latitude = String.valueOf(currentLocation.latitude);
-                    longitude = String.valueOf(currentLocation.longitude);
-
-                    progress.setVisibility(View.VISIBLE);
-                    tvLocation.setVisibility(View.INVISIBLE);
-                    if (centerLatLng.latitude != 0 && centerLatLng.longitude != 0) {
-                        new AddressBackground().execute();
-                        currentLocation = cameraPosition.target;
-                    } else {
-                        Toast.makeText(PickLocationActivity.this, R.string.please_try_again, Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
-
-            GPSTracker gps = new GPSTracker(this);
-            if (gps.canGetLocation()) {
-                double latitude = gps.getLatitude();
-                double longitude = gps.getLongitude();
-                LatLng latLng = new LatLng(latitude, longitude);
-                googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-            } else {
-                gps.showSettingsAlert();
-            }
         }
 
         mGoogleApiClient = new GoogleApiClient.Builder(PickLocationActivity.this)
                 .addApi(Places.GEO_DATA_API)
-                .enableAutoManage(this, GOOGLE_API_CLIENT_ID, this)
-                .addConnectionCallbacks(this)
+                .enableAutoManage(this, GOOGLE_API_CLIENT_ID, new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                        Log.e(LOG_TAG, "Google Places API connection failed with error code: "
+                                + connectionResult.getErrorCode());
+
+                        Toast.makeText(PickLocationActivity.this,
+                                "Google Places API connection failed with error code:" +
+                                        connectionResult.getErrorCode(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                    @Override
+                    public void onConnected(@Nullable Bundle bundle) {
+                        mPlaceArrayAdapter.setGoogleApiClient(mGoogleApiClient);
+                        Log.i(LOG_TAG, "Google Places API connected.");
+                    }
+
+                    @Override
+                    public void onConnectionSuspended(int i) {
+                        mPlaceArrayAdapter.setGoogleApiClient(null);
+                        Log.e(LOG_TAG, "Google Places API connection suspended.");
+                    }
+                })
                 .build();
+
+
         mAutocompleteTextView.setThreshold(3);
         mAutocompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final PlaceArrayAdapter.PlaceAutocomplete item = mPlaceArrayAdapter.getItem(position);
                 final String placeId = String.valueOf(item.placeId);
-                Log.i(LOG_TAG, "Selected: " + item.description);
                 PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
                         .getPlaceById(mGoogleApiClient, placeId);
+
                 placeResult.setResultCallback(new ResultCallback<PlaceBuffer>() {
                     @Override
                     public void onResult(@NonNull PlaceBuffer places) {
@@ -196,30 +190,6 @@ public class PickLocationActivity extends AppCompatActivity implements
         overridePendingTransition(R.anim.do_nothing, R.anim.do_nothing);
     }
 
-    @Override
-    public void onConnected(Bundle bundle) {
-        mPlaceArrayAdapter.setGoogleApiClient(mGoogleApiClient);
-        Log.i(LOG_TAG, "Google Places API connected.");
-
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        Log.e(LOG_TAG, "Google Places API connection failed with error code: "
-                + connectionResult.getErrorCode());
-
-        Toast.makeText(this,
-                "Google Places API connection failed with error code:" +
-                        connectionResult.getErrorCode(),
-                Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-        mPlaceArrayAdapter.setGoogleApiClient(null);
-        Log.e(LOG_TAG, "Google Places API connection suspended.");
-    }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -233,6 +203,43 @@ public class PickLocationActivity extends AppCompatActivity implements
 
                 break;
         }
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        this.googleMap = googleMap;
+
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+        googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
+            @Override
+            public void onCameraChange(CameraPosition cameraPosition) {
+                LatLng centerLatLng = cameraPosition.target;
+                Log.d("Center Latitude", String.valueOf(centerLatLng.latitude));
+                Log.d("Center Longitude", String.valueOf(centerLatLng.longitude));
+
+                currentLocation = centerLatLng;
+
+                latitude = String.valueOf(currentLocation.latitude);
+                longitude = String.valueOf(currentLocation.longitude);
+
+                progress.setVisibility(View.VISIBLE);
+                tvLocation.setVisibility(View.INVISIBLE);
+                if (centerLatLng.latitude != 0 && centerLatLng.longitude != 0) {
+                    new AddressBackground().execute();
+                    currentLocation = cameraPosition.target;
+                } else {
+                    Toast.makeText(PickLocationActivity.this, R.string.please_try_again, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        GPSTracker gps = new GPSTracker(this);
+        if (gps.canGetLocation()) {
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(gps.getLatitude(), gps.getLongitude()), 15));
+        } else {
+            gps.showSettingsAlert();
+        }
+
     }
 
     public class AddressBackground extends AsyncTask<String, String, String> {

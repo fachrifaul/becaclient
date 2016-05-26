@@ -1,4 +1,4 @@
-package id.web.gocak.view.main;
+package id.web.gocak.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.web.gocak.R;
+import id.web.gocak.model.Jasa;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 

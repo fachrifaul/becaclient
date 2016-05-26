@@ -1,4 +1,4 @@
-package id.web.gocak.view.picklocation;
+package id.web.gocak.adapter;
 
 import android.content.Context;
 import android.util.Log;

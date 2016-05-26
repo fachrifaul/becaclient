@@ -1,4 +1,4 @@
-package id.web.gocak.view.antarjemput;
+package id.web.gocak.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,8 +15,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import id.web.gocak.R;
 import id.web.gocak.util.ApiConstant;
-import id.web.gocak.view.order.OrderActivity;
-import id.web.gocak.view.picklocation.PickLocationActivity;
 
 
 public class TransportActivity extends AppCompatActivity {

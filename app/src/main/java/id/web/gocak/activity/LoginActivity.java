@@ -1,4 +1,4 @@
-package id.web.gocak.view.login;
+package id.web.gocak.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,8 +18,6 @@ import id.web.gocak.model.OauthUser;
 import id.web.gocak.model.User;
 import id.web.gocak.service.ServiceLogin;
 import id.web.gocak.session.UserSessionManager;
-import id.web.gocak.view.main.MainActivity;
-import id.web.gocak.view.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
     @Bind(R.id.coordinatorLayout) CoordinatorLayout coordinatorLayout;
