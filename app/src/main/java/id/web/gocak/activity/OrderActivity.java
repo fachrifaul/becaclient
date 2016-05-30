@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -31,6 +32,7 @@ public class OrderActivity extends AppCompatActivity {
     @Bind(R.id.distance_textview) TextView distanceTextView;
     @Bind(R.id.payment_textview) TextView paymentTextView;
 
+    private static final String TAG = "OrderActivity";
     private String FROMLATITUDE, FROMLONGITUDE, TOLATITUDE, TOLONGITUDE;
     private String FROMADDRESS, TOADDRESS, DETAILADDRESS;
     private String paymentOrder, distanceOrder;
@@ -47,10 +49,7 @@ public class OrderActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        progressDialog = new ProgressDialog(OrderActivity.this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Loading ....");
-        progressDialog.show();
+        showLoading();
 
         sessionManager = new UserSessionManager(this);
 
@@ -84,10 +83,17 @@ public class OrderActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.do_nothing, R.anim.do_nothing);
     }
 
+    private void showLoading() {
+        progressDialog = new ProgressDialog(OrderActivity.this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading ....");
+        progressDialog.show();
+    }
+
     @OnClick(R.id.order_textview)
     public void onClickOrder() {
         new ServiceOrder(this).fetchOrder(sessionManager.getIdUser(), sessionManager.getTelp(), DETAILADDRESS,
-               FROMADDRESS, FROMLATITUDE, FROMLONGITUDE,TOADDRESS, TOLATITUDE, TOLONGITUDE,
+                FROMADDRESS, FROMLATITUDE, FROMLONGITUDE, TOADDRESS, TOLATITUDE, TOLONGITUDE,
                 distanceOrder, paymentOrder,
                 new ServiceOrder.OrderCallBack() {
                     @Override
@@ -104,6 +110,11 @@ public class OrderActivity extends AppCompatActivity {
 
 
     private void serviceDistance() {
+        Log.wtf(TAG, "serviceDistance: " + FROMLATITUDE);
+        Log.wtf(TAG, "serviceDistance: " + FROMLONGITUDE);
+        Log.wtf(TAG, "serviceDistance: " + TOLATITUDE);
+        Log.wtf(TAG, "serviceDistance: " + TOLONGITUDE);
+
         new ServiceDistance(this).fetchDistance(FROMLATITUDE, FROMLONGITUDE, TOLATITUDE, TOLONGITUDE,
                 new ServiceDistance.DistanceCallBack() {
                     @Override
@@ -111,11 +122,16 @@ public class OrderActivity extends AppCompatActivity {
                         if (progressDialog.isShowing())
                             progressDialog.dismiss();
 
-                        progressDialog.dismiss();
-                        paymentOrder = String.valueOf(lokasi.payment);
-                        distanceOrder = String.valueOf(lokasi.distanceValue);
-                        distanceTextView.setText(lokasi.distance);
-                        paymentTextView.setText("Rp. " + lokasi.showpayment);
+                        try {
+                            paymentOrder = String.valueOf(lokasi.payment);
+                            distanceOrder = String.valueOf(lokasi.distanceValue);
+                            distanceTextView.setText(lokasi.distance);
+                            paymentTextView.setText("Rp. " + lokasi.showpayment);
+                        } catch (NullPointerException e) {
+                            showLoading();
+                            serviceDistance();
+                        }
+
                     }
 
                     @Override

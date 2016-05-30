@@ -1,7 +1,6 @@
 package id.web.gocak.service;
 
 import android.content.Context;
-import android.util.Log;
 
 import id.web.gocak.R;
 import id.web.gocak.model.Distance;
@@ -29,6 +28,7 @@ public class ServiceDistance {
         );
     }
 
+    public static final String TAG = "ServiceDistance";
     private Context context;
 
     public ServiceDistance(Context context) {
@@ -46,6 +46,8 @@ public class ServiceDistance {
         DistanceUrl service = retrofit.create(DistanceUrl.class);
         Call<Distance> listCall = service.getDistance(fromLatitude, fromLongitude, toLatitude, toLongitude);
         listCall.enqueue(new Callback<Distance>() {
+
+
             @Override
             public void onResponse(Call<Distance> call,
                                    Response<Distance> response) {
@@ -55,8 +57,8 @@ public class ServiceDistance {
                     Distance distance = response.body();
                     Distance.Lokasi lokasi = distance.lokasi.get(0);
 
-                    Log.wtf("TAG", "onResponse: "+lokasi.distance );
-                    Log.wtf("TAG", "onResponse: "+lokasi.distanceValue );
+//                    Log.wtf(TAG, "onResponse: " + lokasi.distance);
+//                    Log.wtf(TAG, "onResponse: " + lokasi.distanceValue);
 
                     if (!lokasi.distance.equals("0")) {
                         callback.onSuccess(lokasi);
